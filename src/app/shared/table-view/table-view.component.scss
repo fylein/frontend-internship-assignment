@@ -1,0 +1,50 @@
+.table-view {
+  @apply
+  tw-w-full
+  tw-overflow-hidden
+  tw-border-collapse
+  tw-p-12-px
+  tw-table-auto
+}
+
+.table-row {
+  @apply
+  tw-h-60-px
+  tw-border
+  tw-border-solid
+  tw-border-light-border
+  tw-bg-table-header-bg
+  tw-pl-12-px;
+
+  .header {
+    @apply
+    tw-text-start
+    tw-w-1/3
+    tw-border-r
+    tw-border-l-0
+    tw-border-b-0
+    tw-border-t-0
+    tw-border-solid
+    tw-border-light-border
+  }
+
+}
+
+.table-body {
+  @apply
+  tw-border
+  tw-border-solid
+  tw-border-light-border
+  tw-border-t-0;
+
+  .row-data {
+    @apply
+    tw-h-40-px
+    tw-border-b
+    tw-border-l-0
+    tw-border-r-0
+    tw-border-t-0
+    tw-border-solid
+    tw-border-light-border
+  }
+}

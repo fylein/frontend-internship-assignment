@@ -1,0 +1,26 @@
+<div class="tw-m-24-px">
+  <div class="tw-mb-24-px tw-text-24-px"> Top {{ booksList.length }} book{{ booksList.length > 1 ? "s" : "" }} on {{ subjectName }}</div>
+
+  <ng-container>
+    <table class="table-view">
+      <thead>
+        <tr class="table-row">
+          <th class="header">Title and Sub Title</th>
+          <th class="header">Author</th>
+          <th class="header">First Publish Year</th>
+        </tr>
+      </thead>
+      <tbody class="table-body">
+        <tr *ngFor="let book of booksList" class="row-data">
+          <td>
+            <a class="tw-no-underline" href="https://openlibrary.org{{ book.key }}" target="_blank">{{ book.title }}</a>
+          </td>
+          <td>
+            {{ book.authors.length > 0 ? book.authors[0].name : "Unknown" }}
+          </td>
+          <td>{{ book.first_publish_year }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+</div>
