@@ -2,7 +2,7 @@
 
 ## Who is this for?
 
-This challenge is meant for candidates who wish intern at Fyle and work with our engineering team. You should be able to commit to at least 6 months of dedicated time for internship.
+This challenge is meant for candidates who wish to intern at Fyle and work with our engineering team. The candidate should be able to commit to at least 6 months of dedicated time for internship.
 
 ## Why work at Fyle?
 
@@ -37,3 +37,4 @@ Run `nx serve front-end-internship-assignment` for a dev server. Navigate to htt
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
+Visit the [Angular Documentation](https://angular.io/guide/styleguide) to learn more.
