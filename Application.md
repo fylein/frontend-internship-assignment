@@ -6,7 +6,7 @@
 ## Challenge
 ### Your tasks
 *You can fork this repo and follow instructions on the README.md to view this*
-- ![Add Missing Features.](## Missing Features)
+- [Add Missing Features.](#Missing Features)
 - Deploy using Netlify, vercel or Heroku or any other platform and the deployment link (a live version of the application) should be shared.
 
 Once you are done with your task, please use this form [https://forms.gle/wBLwzmz1Gs5CsRFp7](https://forms.gle/wBLwzmz1Gs5CsRFp7) to complete your submission.
