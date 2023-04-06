@@ -6,7 +6,7 @@
 ## Challenge
 ### Your tasks
 *You can fork this repo and follow instructions on the README.md to view this*
-- [Add Missing Features.](## Missing Features)
+- ![Add Missing Features.](## Missing Features)
 - Deploy using Netlify, vercel or Heroku or any other platform and the deployment link (a live version of the application) should be shared.
 
 Once you are done with your task, please use this form [https://forms.gle/wBLwzmz1Gs5CsRFp7](https://forms.gle/wBLwzmz1Gs5CsRFp7) to complete your submission.
@@ -21,7 +21,6 @@ You will hear back within 48 hours from us via email.
 - clicking on each of this will navigate to a new URL.
 - that will load the data using the `Subjects API` referenced above.
 
-*You can use the below wireframe for your reference.*
 ![Trending Subjects Results](./static/images/results.png)
 
 ## Missing Features
@@ -31,6 +30,8 @@ You will hear back within 48 hours from us via email.
 the results must be shown in the same home page and using the table view component.
 - The results must be `paginated` - not more than 10 search results must be retrieved in one go (use `offset` and `limit`) - there must be a way to view the `Next` set of search results and similarly also be able to view the `Previous` page results.
 - The search key must be visible in the search box and there must be a way to clear the searched text.
+
+*You can use the below wireframe for your reference.*
 ![Refrence wireframe](./static/images/reference.png)
 
 ### Fix Bugs
