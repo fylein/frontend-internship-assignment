@@ -20,6 +20,8 @@ You will hear back within 48 hours from us via email.
 ### Trending Subjects
 - clicking on each of this will navigate to a new URL.
 - that will load the data using the `Subjects API` referenced above.
+
+*You can use the below wireframe for your reference.*
 ![Trending Subjects Results](./static/images/results.png)
 
 ## Missing Features
