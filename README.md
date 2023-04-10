@@ -14,6 +14,8 @@ We are an extremely transparent organization. Check out our [careers page](https
 
 This challenge involves implementing a Books Library using the Open Library Subjects and Search APIs . The challenge is described in detail [here](./Application.md)
 
+__Note__ - This challenge is in angular. We work on angular frameworks & after you join we expect the same from you. Hence it is required to complete this assignement in angular itself.
+
 ## What happens next?
 
 You will hear back within 48 hours from us via email.
