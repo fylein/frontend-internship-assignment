@@ -10,11 +10,11 @@
 *,
 html,
 body {
-  @apply
-  tw-font-activ-grotisk
-  tw-text-14-px
-  tw-box-border
-  tw-antialiased;
+  @apply tw-font-activ-grotisk tw-text-14-px tw-box-border tw-antialiased;
+}
+
+body {
+  @apply tw-overflow-hidden;
 }
 
 html,
@@ -27,6 +27,7 @@ body {
 }
 
 table {
+
   td,
   th {
     padding-left: 16px;

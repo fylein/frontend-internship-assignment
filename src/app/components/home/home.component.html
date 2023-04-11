@@ -1,23 +1,95 @@
-<div class="header">
-  <div class="tw-text-24-px tw-font-600">Open Books Library</div>
-  <div class="search-button">
-    <mat-icon class="tw-mt-16-px" aria-label="Search Icon">search</mat-icon>
-    <input
-      [formControl]="bookSearch"
-      name="searchKey"
-      type="text"
-      placeholder="Search Books"
-      class="tw-border-0 tw-bg-inherit"
-    >
+<div class="tw-h-screen tw-overflow-hidden">
+  <div class="header tw-h-[12%] ">
+    <div class="tw-text-24-px tw-font-600">Open Books Library</div>
+    <div class="search-button tw-justify-center tw-items-center tw-py-2 tw-px-3 ">
+      <mat-icon class="tw-w-5" aria-label="Search Icon">search</mat-icon>
+      <input [formControl]="bookSearch" (keydown.enter)="onEnter()" name="searchKey" type="text"
+        placeholder="Search Books"
+        class="tw-border-0 tw-bg-inherit tw-mx-2 tw-w-full focus-visible:tw-border-none focus-within:tw-border-none">
+
+      <mat-icon class="tw-w-5 " aria-label="Cross Icon" *ngIf="showQueryReset" (click)="resetQuery()">close</mat-icon>
+
+    </div>
+
   </div>
-</div>
-<div class="tw-flex tw-flex-row tw-m-24-px">
-  <section class="trending-subjects">
-    <div class="tw-font-600 tw-text-24-px">Trending Subjects</div>
-    <ul class="tw-list-none tw-pl-0">
-      <li class="tw-text-16-px tw-cursor-pointer tw-p-12-px" *ngFor="let subject of trendingSubjects" routerLink="/trending-subject/{{ subject.name }}">
-        {{ subject.name }}
-      </li>
-    </ul>
-  </section>
+  <div class="tw-flex tw-flex-row tw-h-[88%]">
+    <section class="trending-subjects">
+      <div class="tw-font-600 tw-text-24-px tw-pt-24-px ">Trending Subjects</div>
+      <ul class="tw-list-none tw-pl-0">
+        <li class="tw-text-16-px tw-cursor-pointer tw-p-12-px" *ngFor="let subject of trendingSubjects"
+          routerLink="/trending-subject/{{ subject.name }}">
+          {{ subject.name }}
+        </li>
+      </ul>
+    </section>
+    <div class="tw-flex tw-flex-col  tw-w-full tw-h-full tw-p-24-px tw-overflow-y-auto">
+      <div class="tw-grid tw-place-content-center tw-h-full tw-w-full" *ngIf="state === 'initial'">
+        <img src="assets/search.svg" class="tw-h-96 tw-w-96" alt="Search for books">
+        <p class="tw-grid tw-place-content-center tw-text-24-px">
+          Search for books
+        </p>
+      </div>
+
+      <front-end-internship-assignment-table-view [booksList]="books" *ngIf="state === 'completed'"
+        [subjectName]="query"></front-end-internship-assignment-table-view>
+      <div class="tw-flex" *ngIf="state === 'completed'">
+        <div class="tw-flex tw-ml-5 tw-justify-center tw-items-center">Showing {{startEntryCount}} to {{endEntryCount}}
+          of
+          {{resultCount}} entries
+        </div>
+        <nav aria-label="Pagination" class="tw-inline-flex tw-ml-auto tw--space-x-px tw-rounded-md tw-shadow-sm ">
+          <div class="tw-text-14-px tw-h-full tw-grid tw-place-content-center tw-mr-2">
+            Display :
+          </div>
+          <div>
+            <input type="number" [formControl]="pageResultsDisplay" (keydown.enter)="onPageResultsDisplayChange()"
+              class="tw-py-auto tw-pl-2 tw-mr-2 tw-h-full tw-pr-0 tw-w-16 tw-rounded-md tw-border-gray-300 tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-blue-400 tw-focus:border-transparent"
+              placeholder="10">
+          </div>
+
+          <button type="button" (click)="previousPage()" [disabled]="currentPage === 1"
+            [ngClass]="{'tw-opacity-50 tw-cursor-not-allowed': currentPage === 1}"
+            class="tw-inline-flex tw-items-center tw-px-2 tw-py-2 tw-text-sm tw-font-600 tw-border tw-rounded-l-md">
+            <span class="tw-sr-only">Previous</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="tw-w-5 tw-h-5">
+              <path fill-rule="evenodd"
+                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </button>
+
+          <button type="button" aria-current="page" *ngFor="let pageNumber of generatePageButtons()"
+            [ngClass]="{'tw-bg-black tw-text-light-border ': currentPage === pageNumber}" (click)="goToPage(pageNumber)"
+            class="tw-inline-flex tw-cursor-pointer tw-items-center  tw-px-4 tw-py-2 tw-border"> {{
+            pageNumber
+            === -1 ? '...' : pageNumber }}
+          </button>
+          <button type="button" (click)="nextPage()" [disabled]="currentPage >= totalPages"
+            [ngClass]="{'tw-opacity-50 tw-cursor-not-allowed': currentPage >= totalPages}"
+            class="tw-inline-flex tw-items-center tw-px-2 tw-py-2 tw-border tw-rounded-r-md tw-font-600">
+            <span class="tw-sr-only">Next</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="tw-w-5 tw-h-5">
+              <path fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </nav>
+
+      </div>
+
+      <div class="tw-grid tw-place-content-center tw-h-full tw-w-full" *ngIf="state === 'loading'">
+        <mat-icon class="spin" aria-label="Loading">refresh</mat-icon>
+      </div>
+
+      <div class="tw-grid tw-place-content-center tw-h-full tw-w-full" *ngIf="state === 'notfound'">
+        <!-- <mat-icon class="spin" aria-label="Loading">refresh</mat-icon> -->
+        <img src="assets/not_found.svg" class="tw-h-96 tw-w-96" alt="Not Found">
+        <p class="tw-grid tw-place-content-center tw-text-24-px"> No resutls found</p>
+      </div>
+
+    </div>
+  </div>
 </div>

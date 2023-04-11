@@ -12,7 +12,7 @@ module.exports = {
   corePlugins: {
     preflight: false
   },
-  content: [join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html}'), ...createGlobPatternsForDependencies(__dirname)],
+  content: ["./src/**/*.{html,ts}", join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html}'), ...createGlobPatternsForDependencies(__dirname)],
   theme: {
     textColor: {
       ...customColors
@@ -26,7 +26,7 @@ module.exports = {
       colors: {
         ...customColors
       },
-      borderRadius: { 
+      borderRadius: {
         '4-px': '4px',
       },
       margin: {

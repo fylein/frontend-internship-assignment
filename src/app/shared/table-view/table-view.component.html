@@ -1,8 +1,8 @@
-<div class="tw-m-24-px">
-  <div class="tw-mb-24-px tw-text-24-px"> Top {{ booksList.length }} book{{ booksList.length > 1 ? "s" : "" }} on {{ subjectName }}</div>
-
+<div class="w-full ">
+  <!-- <div class="tw-mb-6 tw-text-24-px"> Top {{ booksList.length }} book{{ booksList.length > 1 ? "s" : "" }} on {{
+    subjectName }}</div> -->
   <ng-container>
-    <table class="table-view">
+    <table class="table-view tw-mb-6 w-full">
       <thead>
         <tr class="table-row">
           <th class="header">Title and Sub Title</th>
@@ -10,15 +10,17 @@
           <th class="header">First Publish Year</th>
         </tr>
       </thead>
-      <tbody class="table-body">
+      <tbody class="table-body  ">
         <tr *ngFor="let book of booksList" class="row-data">
           <td>
             <a class="tw-no-underline" href="https://openlibrary.org{{ book.key }}" target="_blank">{{ book.title }}</a>
           </td>
           <td>
-            {{ book.authors.length > 0 ? book.authors[0].name : "Unknown" }}
+            {{ book.authors? (book.authors.length > 0 ? book.authors[0].name : "Unknown" ) : (book.author_key &&
+            book.author_key.length > 0 ? book.author_name && book.author_name[0]
+            : "Unknown") }}
           </td>
-          <td>{{ book.first_publish_year }}</td>
+          <td>{{ book.first_publish_year ? book.first_publish_year :"Unknown" }}</td>
         </tr>
       </tbody>
     </table>
