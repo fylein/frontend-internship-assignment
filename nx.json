@@ -7,11 +7,9 @@
       "options": {
         "cacheableOperations": [
           "build",
-          "lint",
-          "test",
-          "e2e"
+          "test"
         ],
-        "accessToken": "N2MyNGRjYzctODZmOS00ZjRjLTgxMTEtZjdkNzE0MTg2NDQyfHJlYWQtd3JpdGU="
+        "accessToken": "Lzg1YDIzNzUtYjUyMS00N2VmLig5NmEtZTM4MjhkMTljY2RleTynOwnvkR4tymp="
       }
     }
   },
@@ -75,5 +73,6 @@
       "style": "scss"
     }
   },
-  "defaultProject": "front-end-internship-assignment"
+  "defaultProject": "front-end-internship-assignment",
+  "defaultBase": "main"
 }
