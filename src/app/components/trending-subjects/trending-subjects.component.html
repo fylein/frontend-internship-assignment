@@ -1,6 +1,17 @@
+<div class="header tw-h-[12%] ">
+  <div class="tw-text-24-px tw-font-600">Open Books Library
+    <span class="tw-text-12-px">
+      | Subject - {{subjectName}}
+    </span>
+  </div>
+  <div class="search-button tw-justify-center tw-items-center tw-py-2 tw-px-3 hover:tw-cursor-pointer" routerLink="/">
+    <!-- <mat-icon>arrow_back</mat-icon> -->
+    Back to Home
+    <!-- <mat-icon class="tw-w-5" aria-label="Search Icon">back</mat-icon> -->
+
+  </div>
+</div>
 <div *ngIf="allBooks.length > 0">
-  <front-end-internship-assignment-table-view
-  [booksList]="allBooks"
-  [subjectName]="subjectName"
-  ></front-end-internship-assignment-table-view>
+  <front-end-internship-assignment-table-view [booksList]="allBooks"
+    [subjectName]="subjectName"></front-end-internship-assignment-table-view>
 </div>
