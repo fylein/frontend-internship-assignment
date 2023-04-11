@@ -25,6 +25,9 @@ You will hear back within 48 hours from us via email.
 
 ## Missing Features
 *You will need to implement this*
+
+__Note__ - This challenge is in angular. We work on angular frameworks & after you join we expect the same from you. Hence it is required to complete this assignement in angular itself.
+
 ### Search box
 - __Implement Search by book title or author name__ - Make the search box to allows us to search books by booktitle or author name - can use the `Search API` referenced above for this. The results must be shown in the same home page and using the table view component.
 - __Paginated results__ - The results must be `paginated` - not more than 10 search results must be retrieved in one go (use `offset` and `limit`). There must be a way to view the `Next` set of search results and similarly also be able to view the `Previous` page results.
