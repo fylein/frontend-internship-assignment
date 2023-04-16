@@ -1,0 +1,10 @@
+.header-bold{
+  background-color: #abf2f2 !important;
+
+  @apply
+  tw-font-bold
+}
+
+.mat-column-title {
+  flex: 0 0 33%;
+}

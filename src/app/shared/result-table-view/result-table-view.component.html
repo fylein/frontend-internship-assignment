@@ -1,0 +1,19 @@
+  <mat-table [dataSource]="booksList.data" class="tw-flex-1 tw-w-full tw-h-full">
+    <!-- Name Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell class="header-bold" *matHeaderCellDef>Title</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.title}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="author_name">
+      <mat-header-cell class="header-bold" *matHeaderCellDef>Author</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.author_name ? element.author_name.length > 0 ? element.author_name[0] : "Unknown": "Unknown"}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="publish_date">
+      <mat-header-cell class="header-bold" *matHeaderCellDef>Year Of Publication</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.publish_year ? element.publish_year.length > 0 ? element.publish_year[0] : "Unknown" : "Not Published"}}</mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+

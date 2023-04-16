@@ -1,16 +1,17 @@
 .header {
+  height: 50px;
   @apply
   tw-flex
   tw-flex-row
   tw-justify-between
   tw-items-center
   tw-rounded-4-px
-  tw-p-12-px
-  tw-m-24-px;
-  background: linear-gradient(146deg, #e1eeff 19.67%, #ffe4fb 127.56%);
 }
 
 .search-button {
+  input:focus {
+      outline: none;
+    }
   @apply
   tw-border 
   tw-border-solid 
@@ -18,14 +19,22 @@
   tw-rounded-4-px
   tw-flex
   tw-justify-center
-  tw-h-60-px
-  tw-w-200-px
+  tw-items-center
+  tw-px-2
+  tw-py-1
+  
 }
 
 .trending-subjects {
+  flex: 0 0 33%;
   @apply
-  tw-bg-table-header-bg
-  tw-p-12-px
   tw-rounded-4-px
-  tw-shadow-lg
+}
+
+.sidebar{
+  padding-top: 50px;
+  background: linear-gradient(146deg, #8600e7 19.67%, #c200f2 127.56%);
+  color: white;
+  @apply
+  tw-px-4
 }

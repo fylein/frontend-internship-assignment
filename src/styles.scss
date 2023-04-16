@@ -6,6 +6,23 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F2F2F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #BDBDBD;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6E6E6E;
+}
 
 *,
 html,

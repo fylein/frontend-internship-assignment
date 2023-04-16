@@ -1,23 +1,43 @@
-<div class="header">
-  <div class="tw-text-24-px tw-font-600">Open Books Library</div>
-  <div class="search-button">
-    <mat-icon class="tw-mt-16-px" aria-label="Search Icon">search</mat-icon>
-    <input
-      [formControl]="bookSearch"
-      name="searchKey"
-      type="text"
-      placeholder="Search Books"
-      class="tw-border-0 tw-bg-inherit"
-    >
+<div class="tw-h-screen tw-w-screen tw-flex">
+  <div class="tw-flex tw-items-center  tw-flex-col sidebar">
+    <section class="trending-subjects tw-mt-8">
+      <div class="tw-font-600 tw-text-24-px">Trending Subjects</div>
+      <ul class="tw-list-none tw-pl-0">
+        <li class="tw-text-16-px tw-cursor-pointer tw-py-2" *ngFor="let subject of trendingSubjects"
+          routerLink="/trending-subject/{{ subject.name }}">
+          {{ subject.name }}
+        </li>
+      </ul>
+    </section>
   </div>
-</div>
-<div class="tw-flex tw-flex-row tw-m-24-px">
-  <section class="trending-subjects">
-    <div class="tw-font-600 tw-text-24-px">Trending Subjects</div>
-    <ul class="tw-list-none tw-pl-0">
-      <li class="tw-text-16-px tw-cursor-pointer tw-p-12-px" *ngFor="let subject of trendingSubjects" routerLink="/trending-subject/{{ subject.name }}">
-        {{ subject.name }}
-      </li>
-    </ul>
-  </section>
+  <div class="tw-flex tw-flex-col tw-flex-1">
+    <div class="header tw-m-4 ">
+      <div class="tw-text-24-px tw-font-600">Open Books Library</div>
+      <div class="search-button">
+        <mat-icon class="tw-mr-1" aria-label="Search Icon">search</mat-icon>
+        <input [formControl]="bookSearch" name="searchKey" type="text" placeholder="Search Books"
+          class="tw-border-0 tw-bg-inherit">
+      </div>
+    </div>
+    <div class="tw-flex tw-flex-col tw-min-h-0 tw-flex-1 tw-relative">
+      <!-- <div class="tw-flex-1 tw-flex tw-flex-col"> -->
+        <front-end-internship-assignment-result-table-view [booksList]="bookSearchResult"
+          [ngClass]="(searchText==='') || totalSize===0 ? '' : 'tw-overflow-scroll'"
+          class="tw-h-full tw-flex"></front-end-internship-assignment-result-table-view>
+        <div *ngIf="isLoading" class="tw-absolute top-0 left-0 tw-flex tw-justify-center tw-items-center tw-h-full tw-w-full tw-bg-[rgba(0,0,0,.1)]">
+          <mat-spinner [diameter]="48"></mat-spinner>
+        </div>
+        <div *ngIf="!isLoading && searchText===''" class="tw-flex-1 tw-flex tw-justify-center tw-items-center">
+          <p>Type a text to search...</p>
+        </div>
+        <div *ngIf="!isLoading && searchText!=='' && totalSize===0"
+          class="tw-flex-1 tw-flex tw-justify-center tw-items-center">
+          <p>No Result Found...</p>
+        </div>
+        <mat-paginator [pageIndex]="pageIndex" (page)="getPaginatorData($event)" [length]="totalSize" [pageSize]="10"
+          aria-label="Select page of periodic elements">
+        </mat-paginator>
+      <!-- </div> -->
+    </div>
+  </div>
 </div>
