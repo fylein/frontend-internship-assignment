@@ -1,6 +1,8 @@
+<div *ngIf="isLoading" class="tw-h-full tw-flex tw-justify-center tw-items-center">
+  <mat-spinner [diameter]="48"></mat-spinner>
+</div>
+<a *ngIf="allBooks.length > 0" class="tw-bg-[#8500e6] tw-p-4 tw-flex tw-items-center tw-justify-center tw-w-[max-content] tw-rounded-xl" href="/">Back to home</a>
 <div *ngIf="allBooks.length > 0">
-  <front-end-internship-assignment-table-view
-  [booksList]="allBooks"
-  [subjectName]="subjectName"
-  ></front-end-internship-assignment-table-view>
+  <front-end-internship-assignment-table-view [booksList]="allBooks"
+    [subjectName]="subjectName"></front-end-internship-assignment-table-view>
 </div>
