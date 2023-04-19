@@ -21,6 +21,9 @@
   tw-h-60-px
   tw-w-200-px
 }
+.search-button{
+  position: relative;
+}
 
 .trending-subjects {
   @apply
@@ -28,4 +31,41 @@
   tw-p-12-px
   tw-rounded-4-px
   tw-shadow-lg
+  
+}
+.clear-icon {
+  position: absolute;
+  top: 50%; /* center the icon vertically */
+  right: 12px; /* align the icon to the right of the container */
+  transform: translateY(-90%); /* center the icon vertically */
+  cursor: pointer;
+}
+
+.tw-text-center {
+  text-align: center;
+}
+
+.search-not-found {
+  text-align: center;
+  margin: 24px;
+  font-size: 50px;
+  color: #C4C4C4;
+}
+
+.loader {
+  position:fixed;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

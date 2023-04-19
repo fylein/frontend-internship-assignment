@@ -1,16 +1,25 @@
 <div class="header">
   <div class="tw-text-24-px tw-font-600">Open Books Library</div>
   <div class="search-button">
-    <mat-icon class="tw-mt-16-px" aria-label="Search Icon">search</mat-icon>
+    <form #myForm="ngForm">
+        <mat-icon class="tw-mt-16-px"  aria-label="Search Icon" (click)="getAllBooks(); searchClicked = true;"
+        [ngClass]="{ 'searching': isLoading }"> search </mat-icon>
+        <mat-icon matSuffix class="tw-mt-16-px clear-icon" *ngIf="searchSubjectName" aria-label="clear-icon" (click)="clearSearch()">clear</mat-icon>
+        
     <input
       [formControl]="bookSearch"
       name="searchKey"
       type="text"
       placeholder="Search Books"
+      [(ngModel)]="searchSubjectName"
       class="tw-border-0 tw-bg-inherit"
+      matInput
     >
+
+    </form>
   </div>
 </div>
+
 <div class="tw-flex tw-flex-row tw-m-24-px">
   <section class="trending-subjects">
     <div class="tw-font-600 tw-text-24-px">Trending Subjects</div>
@@ -20,4 +29,25 @@
       </li>
     </ul>
   </section>
-</div>
+
+  <div *ngIf="isLoading && searchAllBooks.length===0">
+    <div  class="loader"></div>
+  </div>
+
+  <div *ngIf="searchAllBooks.length > 0">
+    <front-end-internship-assignment-table-view
+    [searchBooksList]="searchAllBooks"
+    [searchSubjectName]="searchSubjectName"
+    ></front-end-internship-assignment-table-view>
+  </div>
+  <div *ngIf="isLoading && searchAllBooks.length>0">
+    <i class="loader"></i>
+  </div>
+
+  <div *ngIf="searchAllBooks.length === 0 && searchSubjectName && searchClicked && !isLoading">
+    <p class="search-not-found"> No Books Found </p>
+  </div>
+
+
+
+
