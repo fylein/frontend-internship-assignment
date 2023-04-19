@@ -1,5 +1,6 @@
-<div class="tw-m-24-px">
+<div class="tw-m-24-px" *ngIf="booksList.length > 1">
   <div class="tw-mb-24-px tw-text-24-px"> Top {{ booksList.length }} book{{ booksList.length > 1 ? "s" : "" }} on {{ subjectName }}</div>
+   <button (click)="goToHomePage()">Home</button>
 
   <ng-container>
     <table class="table-view">
@@ -24,3 +25,36 @@
     </table>
   </ng-container>
 </div>
+
+<div class="tw-m-24-px" *ngIf="searchBooksList.length > 1">
+  <div class="table-container">
+  <div class="tw-mb-24-px tw-text-24-px"> Top {{ searchBooksList.length }} book{{ searchBooksList.length > 1 ? "s" : "" }} on {{ searchSubjectName }}</div>
+ 
+
+  <ng-container>
+    <table class="table-view-new">
+   
+      <thead>
+        <tr class="table-row-new">
+          <th class="header-new">Title and Sub Title</th>
+          <th class="header-new">Author</th>
+          <th class="header-new">First Publish Year</th>
+        </tr>
+      </thead>
+      <tbody class="table-body-new">
+        <tr *ngFor="let book of searchBooksList" class="row-data-new">
+          <td>
+            <a class="tw-no-underline" href="https://openlibrary.org{{ book.key }}" target="_blank">{{ book.title }}</a>
+          </td>
+          <td>
+            {{ book.authors.length > 0 ? book.authors[0].name : "Unknown" }}
+          </td>
+          <td>{{ book.first_publish_year }}</td>
+        </tr>
+      </tbody>
+      <button (click)="previous()">prev</button>
+      <button (click)="next()">next</button>
+    </table>
+  </ng-container>
+</div>
+
