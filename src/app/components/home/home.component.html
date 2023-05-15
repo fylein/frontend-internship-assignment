@@ -1,13 +1,15 @@
 <div class="header">
   <div class="tw-text-24-px tw-font-600">Open Books Library</div>
   <div class="search-button">
-    <mat-icon class="tw-mt-16-px" aria-label="Search Icon">search</mat-icon>
+    <mat-icon class="tw-mt-16-px"  aria-label="Search Icon">search</mat-icon>
     <input
       [formControl]="bookSearch"
       name="searchKey"
+      #search
       type="text"
       placeholder="Search Books"
       class="tw-border-0 tw-bg-inherit"
+      (change) = "searchBooks(search.value)"
     >
   </div>
 </div>
@@ -20,4 +22,21 @@
       </li>
     </ul>
   </section>
+  <!-- Table view for the search results -->
+    <table class="tableView">
+      <thead class>
+      <tr class="tableRow">
+        <th class="tableHead">Title</th>
+        <th class="tableHead">Author</th>
+        <th class="tableHead">Year of Publication</th>
+      </tr>
+    </thead>
+    <tbody class="tableBody">
+      <tr class="rowData" *ngFor="let book of books">
+        <td><a class="tw-no-underline" [href]="book.bookUrl">{{book.title}}</a></td>
+        <td>{{ book.author ? book.author : "Unknown" }}</td>
+        <td>{{book.publicationYear ? book.publicationYear : "Unknown"}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
