@@ -9,9 +9,18 @@ const ROOT_URL = 'https://openlibrary.org'
 })
 export class BooksService {
 
+  private loading = false;
+
   constructor(private http: HttpClient) { }
   getData(searchKey: string, limit: number = 10): Observable<any> {
     const query = `${ROOT_URL}/search.json?q=${searchKey}&limit=${limit}`;
     return this.http.get(query);
+  }
+
+  setLoading(loading: boolean){
+    this.loading = loading;
+  }
+  getLoading(): boolean{
+    return this.loading;
   }
 }

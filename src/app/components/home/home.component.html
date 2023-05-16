@@ -1,7 +1,8 @@
+<front-end-internship-assignment-loader></front-end-internship-assignment-loader>
 <div class="header">
   <div class="tw-text-24-px tw-font-600">Open Books Library</div>
   <div class="search-button">
-    <mat-icon class="tw-mt-16-px"  aria-label="Search Icon">search</mat-icon>
+    <mat-icon class="tw-mt-16-px tw-cursor-pointer"  aria-label="Search Icon">search</mat-icon>
     <input
       [formControl]="bookSearch"
       name="searchKey"
@@ -12,7 +13,7 @@
       (change) = "searchBooks(search.value)"
     >
     <!-- Clear search -->
-    <mat-icon class="clearSearch" (click) = "clearSearch($event)">clear</mat-icon>
+    <mat-icon class="clearSearch tw-cursor-pointer" (click) = "clearSearch($event)">clear</mat-icon>
   </div>
 </div>
 <div class="tw-flex tw-flex-row tw-m-24-px">
@@ -33,7 +34,7 @@
         <th class="tableHead">Year of Publication</th>
       </tr>
     </thead>
-    <tbody class="tableBody">
+    <tbody class="tableBody" *ngIf="books.length > 0; else noResults">
       <tr class="rowData" *ngFor="let book of books | paginate: {
         currentPage: page, totalItems: count, itemsPerPage: 10
       }; let i = index">
@@ -42,6 +43,11 @@
         <td>{{book.publicationYear ? book.publicationYear : "Unknown"}}</td>
       </tr>
     </tbody>
+    <ng-template #noResults>
+      <tr class="rowData">
+        <td  class="tw-text-16-px tw-pl-72 tw-font-600">No results found !</td>
+      </tr>
+    </ng-template>
   </table>
 </div>
 <!-- Pagination -->
