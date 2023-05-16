@@ -9,6 +9,9 @@ import { BooksService } from 'src/app/core/services/books.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  // posts: unknown;
+  page = 1;
+  count = 0;
   bookSearch: FormControl;
 
   constructor(private booksService: BooksService) {
@@ -37,7 +40,7 @@ export class HomeComponent implements OnInit {
   async searchBooks(searchText: string) {
     // console.log(searchText);
     try{
-      const response = await firstValueFrom(this.booksService.getData(searchText));
+      const response = await firstValueFrom(this.booksService.getData(searchText, 100));
       this.books = response.docs.map((book: any) => {
         // console.log(book);
         return{
@@ -52,5 +55,10 @@ export class HomeComponent implements OnInit {
       console.log(error);      
     }
 
+  }
+
+  onPageChange(event: any){
+    this.page = event;
+    // this.searchBooks();
   }
 }
