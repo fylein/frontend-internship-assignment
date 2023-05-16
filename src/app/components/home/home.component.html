@@ -11,6 +11,8 @@
       class="tw-border-0 tw-bg-inherit"
       (change) = "searchBooks(search.value)"
     >
+    <!-- Clear search -->
+    <mat-icon class="clearSearch" (click) = "clearSearch($event)">clear</mat-icon>
   </div>
 </div>
 <div class="tw-flex tw-flex-row tw-m-24-px">
@@ -42,6 +44,7 @@
     </tbody>
   </table>
 </div>
+<!-- Pagination -->
   <div class="tw-flex">
     <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onPageChange($event)"></pagination-controls>
   </div>

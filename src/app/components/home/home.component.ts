@@ -56,6 +56,14 @@ export class HomeComponent implements OnInit {
     }
 
   }
+// Clear search functionality
+  clearSearch(event: any){
+    // console.log("Cls");
+    if(this.bookSearch.value != ""){
+      this.bookSearch.setValue("");
+      this.searchBooks(this.bookSearch.value)
+    }
+  }
 
   onPageChange(event: any){
     this.page = event;
