@@ -48,7 +48,11 @@ module.exports = {
         '60-px': '60px'
       },
       width: {
-        '300-px': '300px'
+        '300-px': '300px',
+        '30-px': '30px'
+      },
+      cursor: {
+        'cursor': 'cursor-pointer'
       }
     },
   },

@@ -66,6 +66,12 @@
 
 }
 
+tr:hover{
+  @apply
+  tw-bg-gray-100
+  tw-cursor-pointer
+}
+
 .tableBody {
   @apply
   tw-border
