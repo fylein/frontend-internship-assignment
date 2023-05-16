@@ -32,11 +32,16 @@
       </tr>
     </thead>
     <tbody class="tableBody">
-      <tr class="rowData" *ngFor="let book of books">
-        <td><a class="tw-no-underline" [href]="book.bookUrl">{{book.title}}</a></td>
+      <tr class="rowData" *ngFor="let book of books | paginate: {
+        currentPage: page, totalItems: count, itemsPerPage: 10
+      }; let i = index">
+        <td><a target="_blank" class="tw-no-underline" [href]="book.bookUrl">{{book.title}}</a></td>
         <td>{{ book.author ? book.author : "Unknown" }}</td>
         <td>{{book.publicationYear ? book.publicationYear : "Unknown"}}</td>
       </tr>
     </tbody>
   </table>
 </div>
+  <div class="tw-flex">
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onPageChange($event)"></pagination-controls>
+  </div>
