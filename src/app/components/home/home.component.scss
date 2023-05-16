@@ -19,7 +19,12 @@
   tw-flex
   tw-justify-center
   tw-h-60-px
-  tw-w-200-px
+  tw-w-300-px
+}
+.clearSearch
+{
+  @apply
+  tw-m-16-px
 }
 
 .trending-subjects {
