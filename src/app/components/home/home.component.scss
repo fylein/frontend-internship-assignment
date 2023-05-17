@@ -62,14 +62,6 @@
     /* Styles for Open Books Library */
   }
 
-  @keyframes rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
 
   .trending-subjects {
     background-color: black;
@@ -100,14 +92,6 @@
       display: flex;
       align-items: center;
   
-      &:hover {
-        background-color: #e0e0e0;
-      }
-      .subject-icon {
-        margin-right: 8px;
-        font-size: 16px;
-        color: #fdfdfd;
-      }
     }
 
   }
@@ -212,14 +196,10 @@
         font-size: 16px;
         cursor: pointer;
         transition: background-color 0.3s ease;
-  
-        &:hover {
-          background-color: #555;
-        }
+
       }
     }
   }
-  
   .search-results-container {
     animation: fadeIn 0.5s ease; /* Fade-in animation */
   }
