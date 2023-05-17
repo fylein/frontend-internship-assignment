@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { catchError, finalize } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -11,6 +11,7 @@ export interface Book {
 }
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-search-results-table',
   templateUrl: './search-results-table.component.html',
   styleUrls: ['./search-results-table.component.scss'],
@@ -21,12 +22,16 @@ export class SearchResultsTableComponent {
 
   constructor(private http: HttpClient) {}
 
-  searchBooks(searchTerm: string): void {
-    const url = `https://openlibrary.org/search.json?q=${searchTerm}`;
+  searchBooks(searchTerm: string, page: number, pageSize: number): void {
+    const url = 'https://openlibrary.org/search.json';
+    const params = new HttpParams()
+      .set('q', searchTerm)
+      .set('page', page.toString())
+      .set('limit', pageSize.toString());
 
     this.isLoading = true; // Set loading state to true before making the request
 
-    this.http.get(url)
+    this.http.get(url, { params })
       .pipe(
         catchError((error) => {
           console.error('Error occurred while searching books:', error);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'front-end-internship-assignment-home',
@@ -38,16 +38,19 @@ export class HomeComponent implements OnInit {
   }
 
   searchBooks(searchTerm: string): void {
-    const offset = (this.currentPage - 1) * this.pageSize;
-    const apiUrl = `http://openlibrary.org/search.json?q=${searchTerm}&limit=${this.pageSize}&offset=${offset}`;
+    const params = new HttpParams()
+      .set('q', searchTerm)
+      .set('limit', this.pageSize.toString())
+      .set('offset', ((this.currentPage - 1) * this.pageSize).toString());
 
     this.isLoading = true; // Show loader
 
-    this.http.get(apiUrl).subscribe((response: any) => {
-      this.searchResults = response.docs;
-      this.totalResults = response.numFound;
-      this.isLoading = false; // Hide loader
-    });
+    this.http.get('https://openlibrary.org/search.json', { params })
+      .subscribe((response: any) => {
+        this.searchResults = response.docs;
+        this.totalResults = response.numFound;
+        this.isLoading = false; // Hide loader
+      });
   }
 
   goToPreviousPage(): void {
@@ -80,7 +83,6 @@ export class HomeComponent implements OnInit {
   
     return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
   }
-  
 
   goToPage(page: number): void {
     if (page >= 1 && page <= this.getTotalPages()) {
@@ -88,5 +90,4 @@ export class HomeComponent implements OnInit {
       this.searchBooks(this.bookSearch.value);
     }
   }
-  
 }
