@@ -1,6 +1,22 @@
-<div *ngIf="allBooks.length > 0">
-  <front-end-internship-assignment-table-view
-  [booksList]="allBooks"
-  [subjectName]="subjectName"
-  ></front-end-internship-assignment-table-view>
+<div class="trending-subject-page">
+  <h2 class="page-title">Trending Subject: {{ subjectName }}</h2>
+
+  <div *ngIf="isLoading; else content">
+    <!-- Loader template -->
+    <div class="loader">
+      <div class="spinner"></div>
+      <div class="loading-text">Loading...</div>
+    </div>
+  </div>
+
+  <ng-template #content>
+    <div *ngIf="allBooks.length > 0">
+      <front-end-internship-assignment-table-view
+        [booksList]="allBooks"
+        [subjectName]="subjectName"
+      ></front-end-internship-assignment-table-view>
+    </div>
+
+    <button class="back-button" (click)="goBack()">Back</button>
+  </ng-template>
 </div>
