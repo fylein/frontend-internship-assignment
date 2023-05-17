@@ -173,32 +173,9 @@
     border-radius: 4px;
     padding: 16px;
   
-    .title {
-      font-size: 20px;
-      font-weight: 600;
-      color: #ffffff; /* Title color */
-      margin-bottom: 16px;
-    }
+    
   
-    .pagination {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 16px;
-  
-      button {
-        margin-left: 8px;
-        margin-top: 100px;
-        background-color: #000000;
-        color: #ffffff; /* Button text color */
-        border: none;
-        border-radius: 4px;
-        padding: 8px 16px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-
-      }
-    }
+    
   }
   .search-results-container {
     animation: fadeIn 0.5s ease; /* Fade-in animation */
