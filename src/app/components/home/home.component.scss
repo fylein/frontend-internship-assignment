@@ -27,33 +27,18 @@
     animation: rotate 1s infinite;
   }
   
-  .clear-search-btn {
-    position: relative;
-    background-color: transparent;
-    border: none;
-    color: #666;
-    cursor: pointer;
-    font-size: 14px;
-    transition: color 0.3s ease;
-    padding: 4px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    
-    &:hover {
-      color: #000000;
-      transform: scale(1.5);
-    }
-    
-    &::before {
-      content: 'x';
-      font-weight: bold;
-    }
+
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
+
 
 .home-container {
   display: flex;
@@ -76,7 +61,16 @@
     
     /* Styles for Open Books Library */
   }
-  
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   .trending-subjects {
     background-color: black;
     padding: 16px;
@@ -118,6 +112,7 @@
 
   }
  }
+  
 .search-results-container {
   flex: 1;
   background-color: #fff;
@@ -131,10 +126,12 @@
     color: #333;
     margin-bottom: 16px;
   }
+
   .pagination {
     display: flex;
     justify-content: flex-end;
     margin-top: 16px;
+
     button {
       margin-left: 8px;
       margin-top: 100px;
@@ -146,6 +143,7 @@
       font-size: 16px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+
       &:hover {
         background-color: #555;
       }
@@ -167,13 +165,22 @@
   height: 60px;
   animation: spin 1s linear infinite;
 }
+
 .loader-text {
   margin-top: 16px;
   font-size: 16px;
   color: #666;
 }
 
-// Additional Colors
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
   .search-results-container {
     flex: 1;
     background-color: black; /* Black background */
@@ -188,6 +195,7 @@
       color: #ffffff; /* Title color */
       margin-bottom: 16px;
     }
+  
     .pagination {
       display: flex;
       justify-content: flex-end;
@@ -212,14 +220,6 @@
     }
   }
   
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
   .search-results-container {
     animation: fadeIn 0.5s ease; /* Fade-in animation */
   }
