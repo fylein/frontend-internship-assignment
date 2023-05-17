@@ -36,9 +36,24 @@ export class HomeComponent implements OnInit {
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       subscribe((value: string) => {
       });
+      // clear localStorage every 1hr
+      setInterval(() => {
+        localStorage.clear();
+      }, 60*60*1000)
   }
+
   async searchBooks(searchText: string) {
     // console.log(searchText);
+
+    // if data is cached then get from localStorage
+    const localData = localStorage.getItem(searchText);
+    if(localData){
+      const {books} = JSON.parse(localData);
+      this.books = books;
+      console.log("local data");
+      
+      return;
+    }
     try{
       const response = await firstValueFrom(this.booksService.getData(searchText, 100));
       this.books = response.docs.map((book: any) => {
@@ -49,8 +64,13 @@ export class HomeComponent implements OnInit {
           publicationYear: book.first_publish_year,
           bookUrl: `https://openlibrary.org/${book.key}`
         }
-        
-      })
+      });
+        //save to localStorage
+      localStorage.setItem(
+        searchText, JSON.stringify({
+          books: this.books,
+        })
+      );
     }catch(error){
       console.log(error);      
     }
@@ -64,9 +84,8 @@ export class HomeComponent implements OnInit {
       this.searchBooks(this.bookSearch.value)
     }
   }
-
+// Pagination
   onPageChange(event: any){
     this.page = event;
-    // this.searchBooks();
   }
 }
