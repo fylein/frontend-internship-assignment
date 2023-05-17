@@ -104,12 +104,7 @@
   border-radius: 4px;
   padding: 16px;
 
-  .title {
-    font-size: 20px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 16px;
-  }
+  
 
   .pagination {
     display: flex;
@@ -128,27 +123,13 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
 
-      &:hover {
-        background-color: #555;
-      }
+      
     }
   }
 }
-.loader-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
 
-.loader {
-  border: 8px solid #f3f3f3; /* Light gray */
-  border-top: 8px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
-}
+
+
 
 .loader-text {
   margin-top: 16px;
@@ -173,9 +154,6 @@
     border-radius: 4px;
     padding: 16px;
   
-    
-  
-    
   }
   .search-results-container {
     animation: fadeIn 0.5s ease; /* Fade-in animation */
