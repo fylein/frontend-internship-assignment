@@ -55,16 +55,6 @@
   }
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-
 .home-container {
   display: flex;
   gap: 24px;
@@ -86,52 +76,7 @@
     
     /* Styles for Open Books Library */
   }
-
-  @keyframes rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes shake {
-    0%, 100% {
-      transform: translateX(0);
-    }
-    10%, 30%, 50%, 70%, 90% {
-      transform: translateX(-5px);
-    }
-    20%, 40%, 60%, 80% {
-      transform: translateX(5px);
-    }
-  }
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  @keyframes glow {
-    0% {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    50% {
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5);
-    }
-    100% {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-  }
-
-
+  
   .trending-subjects {
     background-color: black;
     padding: 16px;
@@ -173,7 +118,6 @@
 
   }
  }
-  
 .search-results-container {
   flex: 1;
   background-color: #fff;
@@ -187,12 +131,10 @@
     color: #333;
     margin-bottom: 16px;
   }
-
   .pagination {
     display: flex;
     justify-content: flex-end;
     margin-top: 16px;
-
     button {
       margin-left: 8px;
       margin-top: 100px;
@@ -204,7 +146,6 @@
       font-size: 16px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-
       &:hover {
         background-color: #555;
       }
@@ -226,22 +167,11 @@
   height: 60px;
   animation: spin 1s linear infinite;
 }
-
 .loader-text {
   margin-top: 16px;
   font-size: 16px;
   color: #666;
 }
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 
 // Additional Colors
   .search-results-container {
@@ -258,7 +188,6 @@
       color: #ffffff; /* Title color */
       margin-bottom: 16px;
     }
-  
     .pagination {
       display: flex;
       justify-content: flex-end;
@@ -291,7 +220,6 @@
       opacity: 1;
     }
   }
-  
   .search-results-container {
     animation: fadeIn 0.5s ease; /* Fade-in animation */
   }
