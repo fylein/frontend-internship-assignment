@@ -9,9 +9,10 @@ import { Book } from 'src/app/core/models/book-response.model';
   styleUrls: ['./trending-subjects.component.scss'],
 })
 export class TrendingSubjectsComponent implements OnInit {
-  isLoading: boolean = true;
-  subjectName: string = '';
+  isLoading = true;
+  subjectName = '';
   allBooks: Book[] = [];
+  errorMessage = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -19,27 +20,29 @@ export class TrendingSubjectsComponent implements OnInit {
     private subjectsService: SubjectsService
   ) {}
 
-  getAllBooks() {
-    this.isLoading = true; // Set loading state to true before fetching data
-
-    this.subjectsService.getAllBooks(this.subjectName).subscribe(
-      (data) => {
-        this.allBooks = data?.works;
-      },
-      (error) => {
-        console.log('Error occurred while fetching books:', error);
-      },
-      () => {
-        this.isLoading = false; // Set loading state to false after data is fetched
-      }
-    );
-  }
-
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.subjectName = params.get('name') || '';
       this.getAllBooks();
     });
+  }
+
+  getAllBooks(): void {
+    this.isLoading = true;
+    this.errorMessage = '';
+
+    this.subjectsService.getAllBooks(this.subjectName).subscribe(
+      (data: any) => {
+        this.allBooks = data?.works || [];
+      },
+      (error: any) => {
+        console.error('Error occurred while fetching books:', error);
+        this.errorMessage = 'Failed to fetch books. Please try again later.';
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 
   goBack(): void {
