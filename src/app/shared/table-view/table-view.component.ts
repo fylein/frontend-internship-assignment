@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Book } from 'src/app/core/models/book-response.model';
 
 @Component({
@@ -7,6 +9,9 @@ import { Book } from 'src/app/core/models/book-response.model';
   styleUrls: ['./table-view.component.scss'],
 })
 export class TableViewComponent {
+  displayedbooksList: any[] = [];
+  pageSize = 10;
+  currentPage = 0;
   @Input() booksList: Book[] = [];
   @Input() subjectName: string = '';
 }

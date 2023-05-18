@@ -1,6 +1,12 @@
-<div *ngIf="allBooks.length > 0">
-  <front-end-internship-assignment-table-view
-  [booksList]="allBooks"
-  [subjectName]="subjectName"
-  ></front-end-internship-assignment-table-view>
+<div *ngIf="isLoading">
+  <div class="loader-overlay">
+    <div class="loader"></div>
+  </div>
+</div>
+
+<div *ngIf="!isLoading">
+  <front-end-internship-assignment-table-view [booksList]="allBooks"
+    [subjectName]="subjectName"></front-end-internship-assignment-table-view>
+  <button class="button button1" (click)="goBack()">Back</button>
+
 </div>
