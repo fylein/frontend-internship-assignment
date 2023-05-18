@@ -9,23 +9,23 @@ import { Book } from 'src/app/core/models/book-response.model';
   styleUrls: ['./trending-subjects.component.scss'],
 })
 export class TrendingSubjectsComponent implements OnInit {
-
   isLoading: boolean = true;
-
   subjectName: string = '';
-
   allBooks: Book[] = [];
-
+  totalItems: any;
   constructor(
     private route: ActivatedRoute,
     private subjectsService: SubjectsService
   ) {}
 
   getAllBooks() {
-    this.subjectsService.getAllBooks(this.subjectName).subscribe((data) => {
+    this.subjectsService.getAllBooks(this.subjectName, 1, 10).subscribe((data) => {
+    
       this.allBooks = data?.works;
+     
       // this.subjectsArray = data;
       this.isLoading = false;
+      this.totalItems = data.work_count;   
     });
   }
 
@@ -36,5 +36,4 @@ export class TrendingSubjectsComponent implements OnInit {
       this.getAllBooks();
     });
   }
-
 }

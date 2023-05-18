@@ -43,6 +43,8 @@ export interface Book {
   public_scan: boolean;
   has_fulltext: boolean;
   availability: Availability;
+  author_name: string;
+  
 }
 
 export interface BookResponse {
@@ -51,4 +53,6 @@ export interface BookResponse {
   subject_type: string;
   work_count: number;
   works: Book[];
+  docs: Book[];
+  author_name: string;
 }

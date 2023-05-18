@@ -8,6 +8,7 @@
       type="text"
       placeholder="Search Books"
       class="tw-border-0 tw-bg-inherit"
+      (keyup.enter)="searchedBook($event)"
     >
   </div>
 </div>
@@ -20,4 +21,10 @@
       </li>
     </ul>
   </section>
+  <div *ngIf="allBooks.length>0">
+    <front-end-internship-assignment-table-view
+    [booksList]="allBooks"
+    [subjectName]="bookname"
+    ></front-end-internship-assignment-table-view>
+  </div>
 </div>
