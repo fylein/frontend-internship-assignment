@@ -8,13 +8,12 @@
 }
 
 .table-row {
-  @apply
-  tw-h-60-px
-  tw-border
-  tw-border-solid
-  tw-border-light-border
-  tw-bg-table-header-bg
-  tw-pl-12-px;
+  height: 60px;
+  border: 1px solid #e2e8f0;
+  background-color: #f7fafc;
+  padding-left: 12px;
+}
+
 
   .header {
     @apply
@@ -28,7 +27,7 @@
     tw-border-light-border
   }
 
-}
+
 
 .table-body {
   @apply
