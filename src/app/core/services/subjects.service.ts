@@ -8,7 +8,7 @@ import { BookResponse } from 'src/app/core/models/book-response.model';
 })
 export class SubjectsService {
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) { }
 
   getAllBooks(subjectName: string): Observable<BookResponse> {
     const limit = 10;

@@ -38,6 +38,7 @@ export interface Book {
   lending_edition: string;
   lending_identifier: string;
   authors: Author[];
+  author_name: Author[];
   first_publish_year: number;
   ia: string;
   public_scan: boolean;
