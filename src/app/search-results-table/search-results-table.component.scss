@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ffffff; /* White border */
+    color: #ffffff; /* Text color */
+  }
+  
+  th {
+    background-color: black; /* Black background */
+    font-weight: bold;
+  }
+  
+  tr:hover {
+    background-color: #555555; /* Dark gray background */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  

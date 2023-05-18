@@ -1,0 +1,17 @@
+<table class="search-results-table">
+    <thead>
+      <tr class="table-header">
+        <th>Title</th>
+        <th>Author(s)</th>
+        <th>Year of Publication</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of searchResults" class="table-row">
+        <td>{{ book.title }}</td>
+        <td>{{ book.author_name.join(', ') }}</td>
+        <td>{{ book.first_publish_year }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

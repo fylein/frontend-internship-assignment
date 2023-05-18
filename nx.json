@@ -5,12 +5,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": [],
         "accessToken": "N2MyNGRjYzctODZmOS00ZjRjLTgxMTEtZjdkNzE0MTg2NDQyfHJlYWQtd3JpdGU="
       }
     }
@@ -75,5 +70,6 @@
       "style": "scss"
     }
   },
-  "defaultProject": "front-end-internship-assignment"
+  "defaultProject": "front-end-internship-assignment",
+  "defaultBase": "main"
 }

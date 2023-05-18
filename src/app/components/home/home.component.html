@@ -1,23 +1,43 @@
 <div class="header">
-  <div class="tw-text-24-px tw-font-600">Open Books Library</div>
-  <div class="search-button">
-    <mat-icon class="tw-mt-16-px" aria-label="Search Icon">search</mat-icon>
-    <input
-      [formControl]="bookSearch"
-      name="searchKey"
-      type="text"
-      placeholder="Search Books"
-      class="tw-border-0 tw-bg-inherit"
-    >
+  <div class="logo">Open Books Library</div>
+  <div class="search-bar">
+    <i class="search-icon fas fa-search"></i>
+    <input #searchInput type="text" [formControl]="bookSearch" placeholder="Search by title or author">
+    <button class="clear-search-btn" (click)="clearSearch()"></button>
   </div>
 </div>
-<div class="tw-flex tw-flex-row tw-m-24-px">
-  <section class="trending-subjects">
-    <div class="tw-font-600 tw-text-24-px">Trending Subjects</div>
-    <ul class="tw-list-none tw-pl-0">
-      <li class="tw-text-16-px tw-cursor-pointer tw-p-12-px" *ngFor="let subject of trendingSubjects" routerLink="/trending-subject/{{ subject.name }}">
-        {{ subject.name }}
-      </li>
-    </ul>
-  </section>
+
+<div class="home-container">
+  <div class="sidebar">
+    <section class="trending-subjects">
+      <div class="trending-subjects-title">Trending Subjects</div>
+      <ul class="trending-subjects-list">
+        <li class="trending-subjects-item" *ngFor="let subject of trendingSubjects" routerLink="/trending-subject/{{ subject.name }}">
+          {{ subject.name }}
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="search-results-container">
+    <h2 class="title">Search Results</h2>
+
+
+    <div class="loader-container" *ngIf="isLoading">
+      <div class="loader"></div>
+      <div class="loader-text">Loading...</div>
+    </div>
+    
+    <div *ngIf="!isLoading">
+      <app-search-results-table [searchResults]="searchResults"></app-search-results-table>
+
+      <div class="pagination">
+        <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+        <ng-container *ngFor="let page of getPageNumbers()">
+          <button (click)="goToPage(page)" [class.active]="currentPage === page">{{ page }}</button>
+        </ng-container>
+        <button (click)="goToNextPage()" [disabled]="currentPage === getTotalPages()">Next</button>
+      </div>
+    </div>
+  </div>
 </div>
