@@ -9,4 +9,7 @@ import { Book } from 'src/app/core/models/book-response.model';
 export class TableViewComponent {
   @Input() booksList: Book[] = [];
   @Input() subjectName: string = '';
+  @Input() totalRecords: any = 0;
+  p = 1;
+  totalPages = this.totalRecords/10;
 }

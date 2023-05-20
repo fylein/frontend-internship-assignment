@@ -25,7 +25,9 @@ export class TrendingSubjectsComponent implements OnInit {
 
   getAllBooks() {
     this.subjectsService.getAllBooks(this.subjectName).subscribe((data) => {
+      console.log(data);
       this.allBooks = data?.works;
+      
       // this.subjectsArray = data;
       this.isLoading = false;
     });

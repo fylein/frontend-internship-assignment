@@ -38,6 +38,15 @@
     </ul>
   </section>
   <div class="tw-w-full">
-    <front-end-internship-assignment-table-view ></front-end-internship-assignment-table-view>
+<div *ngIf="isLoading">Loading...</div>
+
+    <front-end-internship-assignment-table-view 
+    [booksList]="allBooks"
+    [subjectName]="subjectName"
+    [totalRecords] = "totalRecords"
+    ></front-end-internship-assignment-table-view>
+
+    
+
   </div>
 </div>
