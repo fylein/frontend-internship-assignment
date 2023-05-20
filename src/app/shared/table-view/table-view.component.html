@@ -31,8 +31,9 @@
       </tbody>
     </table>
     <div>
-      <button>Previous</button>
-      <button>1</button>
-      <button>Next</button></div>
+      <span>Total Page: {{totalPages}}</span>
+      <button (click)="changePage(currentPage - 1)">Previous</button>
+   
+      <button (click)="changePage(currentPage + 1)">Next</button></div>
   </ng-container>
 </div>

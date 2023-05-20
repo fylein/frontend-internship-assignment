@@ -2,15 +2,18 @@
   <div class="tw-text-24-px tw-font-600">Open Books Library</div>
 
   <div class="search-button">
+    
     <div class="searchOptions tw-border tw-flex tw-align-middle">
       <select
+        [formControl]="searchBy"
         name="searchBy"
+        
         id="searchBy"
         class="tw-bg-amber-300 tw-text-center"
       >
-        <option value="All">All</option>
-        <option value="Title">Title</option>
-        <option value="Author">Author</option>
+        <option value="q" [selected]="true">All</option>
+        <option value="title">Title</option>
+        <option value="author">Author</option>
       </select>
     </div>
 
@@ -22,6 +25,8 @@
       class="tw-border-0 tw-bg-inherit"
     />
     <mat-icon class="tw-mt-16-px" aria-label="Search Icon">search</mat-icon>
+    <mat-icon class="tw-mt-16-px" aria-label="Close Icon">close</mat-icon>
+  
   </div>
 </div>
 <div class="tw-flex tw-flex-row tw-m-24-px">
@@ -38,15 +43,22 @@
     </ul>
   </section>
   <div class="tw-w-full">
-<div *ngIf="isLoading">Loading...</div>
+    <div *ngIf="isLoading">Loading...</div>
 
-    <front-end-internship-assignment-table-view 
-    [booksList]="allBooks"
-    [subjectName]="subjectName"
-    [totalRecords] = "totalRecords"
+    <front-end-internship-assignment-table-view
+      [booksList]="allBooks"
+      [subjectName]="subjectName"
+      [totalPages]="totalRecords"
+      [currentPage]="currentPage"
+      (pageChange)="updatePage($event)"
     ></front-end-internship-assignment-table-view>
-
-    
-
   </div>
+  <ngx-spinner size="medium" [type]="'ball-8bits'"></ngx-spinner>
+</div>
+<mat-spinner [color]="'warn'"></mat-spinner>
+<mat-progress-spinner color="warn" mode="indeterminate"></mat-progress-spinner>
+
+<div>
+
+  <span class="loader"></span>
 </div>

@@ -10,9 +10,9 @@ export class SearchesService {
 
   constructor(private apiService: ApiService) {}
 
-  searchBooks(searchString: string): Observable<any> {
+  searchBooks(searchString: string, pageNumber:any  = 1, type: string = 'q'): Observable<any> {
     const limit = 10;
-    return this.apiService.get(`/search.json?q=${searchString}&fields=*,availability&limit=${limit}`);
+    return this.apiService.get(`/search.json?${type}=${searchString}&fields=*,availability&limit=${limit}&page=${pageNumber}`);
   }
 }
 

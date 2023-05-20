@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from 'src/app/core/models/book-response.model';
 
 @Component({
@@ -6,10 +6,21 @@ import { Book } from 'src/app/core/models/book-response.model';
   templateUrl: './table-view.component.html',
   styleUrls: ['./table-view.component.scss'],
 })
-export class TableViewComponent {
+export class TableViewComponent  {
   @Input() booksList: Book[] = [];
-  @Input() subjectName: string = '';
-  @Input() totalRecords: any = 0;
+  @Input() subjectName = '';
+  @Input() totalPages: any;
+  @Input() currentPage: any;
+  @Output() pageChange = new EventEmitter();
   p = 1;
-  totalPages = this.totalRecords/10;
+  constructor() {
+    //fs
+  }
+  
+  changePage(pageNum: any) {
+    console.log('changing page', pageNum);
+    if (pageNum < this.totalPages && pageNum > 0) {
+      this.pageChange.emit(pageNum);
+    };
+  }
 }

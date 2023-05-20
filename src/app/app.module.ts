@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {NgxPaginationModule} from 'ngx-pagination'; 
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     SharedModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSpinnerModule
   ],
   providers: [NgxPaginationModule],
   bootstrap: [AppComponent],

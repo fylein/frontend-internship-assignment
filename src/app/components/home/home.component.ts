@@ -11,15 +11,18 @@ import { Book } from 'src/app/core/models/book-response.model';
 })
 export class HomeComponent implements OnInit {
   bookSearch: FormControl;
+  searchBy: FormControl;
 
-  isLoading: boolean = false;
+  isLoading = false;
 
-  subjectName: string = '';
+  subjectName ='';
   totalRecords = 0;
   allBooks: Book[] = [];
+  currentPage = 1
 
   constructor(private searchService: SearchesService) {
     this.bookSearch = new FormControl('');
+    this.searchBy = new FormControl('');
   }
 
   trendingSubjects: Array<any> = [
@@ -35,34 +38,51 @@ export class HomeComponent implements OnInit {
       .pipe(debounceTime(300))
       .subscribe((value: string) => {
         this.subjectName = value;
-        console.log(value, 'search value');
         this.isLoading = true;
-        this.searchService.searchBooks(value).subscribe((data) => {
-          console.log(data, 'search string after subscribe');
+        const type = this.searchBy.value;
+        //Search API
+        this.searchService.searchBooks(value,1,type).subscribe((data) => {
           if (data) {
-            this.totalRecords = data?.num_found;
-            console.log(this.totalRecords);
-            
+            this.totalRecords = Math.floor(data?.num_found / 10);
+            this.currentPage = Math.floor(data?.start / 10) + 1
             const res = data?.docs;
-            console.log(res, 'respion');
-            this.allBooks = res.map((book: any) => {
-              let authors = [];
-              if (book.author_name) {
-                authors = book?.author_name?.map((a: any) => {
-                  return { name: a };
-                });
-              }
-
-              return {
-                title: book.title,
-                authors: authors,
-                first_publish_year: book.first_publish_year,
-              };
-            });
-            console.log(this.allBooks, 'All books');
+            //All BOOKS to pass in table
+            this.allBooks = this.formatData(res);
             this.isLoading = false;
           }
         });
       });
+  }
+
+public formatData(res:any){
+  
+  
+ return res.map((book: any) => {
+    let authors = [];
+    if (book.author_name) {
+      authors = book?.author_name?.map((a: any) => {
+        return { name: a };
+      });
+    }
+    return {
+      title: book.title,
+      authors: authors,
+      first_publish_year: book.first_publish_year,
+    };
+  });
+}
+
+
+  public updatePage(page: any) {
+    console.log(page, 'page to be changed from home component')
+    this.searchService.searchBooks(this.subjectName, page).subscribe(data => {
+      if(data){
+        this.allBooks = this.formatData(data?.docs);
+        this.currentPage= page;
+        console.log('after page change', page, this.allBooks);
+        
+      }
+      
+    });
   }
 }
