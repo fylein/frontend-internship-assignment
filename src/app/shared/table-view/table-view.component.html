@@ -30,8 +30,9 @@
         </tr>
       </tbody>
     </table>
-    <div>
-      <span>Total Page: {{totalPages}}</span>
+    <div *ngIf="totalPages > 1">
+
+      <span>Page: {{currentPage}} of {{totalPages}}</span>
       <button (click)="changePage(currentPage - 1)">Previous</button>
    
       <button (click)="changePage(currentPage + 1)">Next</button></div>

@@ -9,17 +9,17 @@ import { Book } from 'src/app/core/models/book-response.model';
 export class TableViewComponent  {
   @Input() booksList: Book[] = [];
   @Input() subjectName = '';
-  @Input() totalPages: any;
+  @Input() totalPages: any = 1;
   @Input() currentPage: any;
   @Output() pageChange = new EventEmitter();
-  p = 1;
+
   constructor() {
-    //fs
+    //pass
   }
   
   changePage(pageNum: any) {
-    console.log('changing page', pageNum);
-    if (pageNum < this.totalPages && pageNum > 0) {
+    
+    if (pageNum <= this.totalPages && pageNum > 0) {
       this.pageChange.emit(pageNum);
     };
   }

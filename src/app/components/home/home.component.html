@@ -24,8 +24,9 @@
       placeholder="Search Books"
       class="tw-border-0 tw-bg-inherit"
     />
-    <mat-icon class="tw-mt-16-px" aria-label="Search Icon">search</mat-icon>
-    <mat-icon class="tw-mt-16-px" aria-label="Close Icon">close</mat-icon>
+    <mat-icon class="tw-mt-16-px tw-cursor-pointer" aria-label="Search Icon">search</mat-icon>
+    <mat-icon class="tw-mt-16-px tw-cursor-pointer" aria-label="Clear Icon" *ngIf="bookSearch.value && bookSearch.value.length > 0"
+      (click)="bookSearch.reset()">close</mat-icon>
   
   </div>
 </div>
@@ -43,19 +44,19 @@
     </ul>
   </section>
   <div class="tw-w-full">
+    <div>No Books found</div>
   <front-end-internship-assignment-loader *ngIf="isLoading" class="tw-h-full tw-flex tw-justify-center tw-items-center"></front-end-internship-assignment-loader>
 
 
-    <front-end-internship-assignment-table-view *ngIf="!isLoading"
+    <front-end-internship-assignment-table-view *ngIf="!isLoading "
       [booksList]="allBooks"
-      [subjectName]="subjectName"
-      [totalPages]="totalRecords"
+      [subjectName]="searchString"
+      [totalPages]="totalPages"
       [currentPage]="currentPage"
       (pageChange)="updatePage($event)"
     ></front-end-internship-assignment-table-view>
   </div>
-  <ngx-spinner size="medium" [type]="'ball-8bits'"></ngx-spinner>
+  
 </div>
-<mat-spinner [color]="'warn'"></mat-spinner>
-<mat-progress-spinner color="warn" mode="indeterminate"></mat-progress-spinner>
+
 
