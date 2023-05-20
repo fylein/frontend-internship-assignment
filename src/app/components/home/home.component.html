@@ -1,15 +1,18 @@
 <div class="header">
   <div class="tw-text-24-px tw-font-600">Open Books Library</div>
 
-  <div class="search-button ">
+  <div class="search-button">
     <div class="searchOptions tw-border tw-flex tw-align-middle">
-      <select name="searchBy" id="searchBy" class="tw-bg-amber-300 tw-text-center ">
+      <select
+        name="searchBy"
+        id="searchBy"
+        class="tw-bg-amber-300 tw-text-center"
+      >
         <option value="All">All</option>
         <option value="Title">Title</option>
         <option value="Author">Author</option>
       </select>
     </div>
-    
 
     <input
       [formControl]="bookSearch"
@@ -19,7 +22,6 @@
       class="tw-border-0 tw-bg-inherit"
     />
     <mat-icon class="tw-mt-16-px" aria-label="Search Icon">search</mat-icon>
-    
   </div>
 </div>
 <div class="tw-flex tw-flex-row tw-m-24-px">
@@ -36,6 +38,6 @@
     </ul>
   </section>
   <div class="tw-w-full">
-  <front-end-internship-assignment-table-view></front-end-internship-assignment-table-view></div>
+    <front-end-internship-assignment-table-view ></front-end-internship-assignment-table-view>
+  </div>
 </div>
-

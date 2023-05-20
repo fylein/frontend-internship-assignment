@@ -1,4 +1,7 @@
-<mat-spinner>Loading</mat-spinner>
+
+<div *ngIf="isLoading" class="border tw-p-4 tw-flex tw-h-full tw-items-center tw-justify-center">
+  <h1 class="tw-text-24-px">Loading ...</h1>
+</div>
 
 <div *ngIf="allBooks.length > 0">
   <front-end-internship-assignment-table-view
@@ -6,3 +9,5 @@
   [subjectName]="subjectName"
   ></front-end-internship-assignment-table-view>
 </div>
+
+<button routerLink="" class="tw-bg-blue-600 tw-text-[#fff] tw-p-3 tw-rounded-md tw-ml-4 tw-cursor-pointer">Back</button>
