@@ -9,12 +9,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {NgxPaginationModule} from 'ngx-pagination'; 
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
-  declarations: [AppComponent, TrendingSubjectsComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    TrendingSubjectsComponent,
+    HomeComponent,
+    LoaderComponent,
+  ],
   imports: [
     BrowserModule,
     RouterModule,
@@ -24,7 +29,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
   ],
   providers: [NgxPaginationModule],
   bootstrap: [AppComponent],

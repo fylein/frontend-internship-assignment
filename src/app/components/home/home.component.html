@@ -43,9 +43,10 @@
     </ul>
   </section>
   <div class="tw-w-full">
-    <div *ngIf="isLoading">Loading...</div>
+  <front-end-internship-assignment-loader *ngIf="isLoading" class="tw-h-full tw-flex tw-justify-center tw-items-center"></front-end-internship-assignment-loader>
 
-    <front-end-internship-assignment-table-view
+
+    <front-end-internship-assignment-table-view *ngIf="!isLoading"
       [booksList]="allBooks"
       [subjectName]="subjectName"
       [totalPages]="totalRecords"
@@ -58,7 +59,3 @@
 <mat-spinner [color]="'warn'"></mat-spinner>
 <mat-progress-spinner color="warn" mode="indeterminate"></mat-progress-spinner>
 
-<div>
-
-  <span class="loader"></span>
-</div>
