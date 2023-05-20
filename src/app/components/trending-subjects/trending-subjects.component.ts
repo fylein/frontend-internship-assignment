@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { SubjectsService } from '../../core/services/subjects.service';
 import { Book } from 'src/app/core/models/book-response.model';
+import { MatProgressSpinnerModule } from '@angular/material'; 
 
 @Component({
   selector: 'front-end-internship-assignment-trending-subjects',
