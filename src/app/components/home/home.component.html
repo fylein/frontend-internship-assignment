@@ -48,7 +48,9 @@
     </ul>
   </section>
   <div class="tw-w-full">
-    <div *ngIf="!isLoading && allBooks.length === 0 && searchString.trim() !== ''">No Books found</div>
+    <div
+    class="tw-flex tw-items-center tw-justify-center tw-font-bold tw-h-full tw-text-24-px"
+    *ngIf="!isLoading && allBooks.length === 0 && searchString.trim() !== ''">No Books found</div>
     <front-end-internship-assignment-loader
       *ngIf="isLoading"
       class="tw-h-full tw-flex tw-justify-center tw-items-center"
