@@ -1,13 +1,36 @@
 <div class="header">
   <div class="tw-text-24-px tw-font-600">Open Books Library</div>
+
   <div class="search-button">
-    <mat-icon class="tw-mt-16-px" aria-label="Search Icon">search</mat-icon>
+    <div class="searchOptions tw-border tw-flex tw-align-middle">
+      <select
+        [formControl]="searchBy"
+        name="searchBy"
+        id="searchBy"
+        class="tw-bg-amber-300 tw-text-center"
+      >
+        <option value="q" [selected]="true">All</option>
+        <option value="title">Title</option>
+        <option value="author">Author</option>
+      </select>
+    </div>
+
     <input
       [formControl]="bookSearch"
       name="searchKey"
       type="text"
       placeholder="Search Books"
-      class="tw-border-0 tw-bg-inherit"
+      class="tw-border-0 tw-bg-inherit tw-outline-none"
+    />
+    <mat-icon class="tw-mt-16-px tw-cursor-pointer" aria-label="Search Icon"
+      >search</mat-icon
+    >
+    <mat-icon
+      class="tw-mt-16-px tw-cursor-pointer"
+      aria-label="Clear Icon"
+      *ngIf="bookSearch.value && bookSearch.value.length > 0"
+      (click)="bookSearch.setValue('')"
+      >close</mat-icon
     >
   </div>
 </div>
@@ -15,9 +38,31 @@
   <section class="trending-subjects">
     <div class="tw-font-600 tw-text-24-px">Trending Subjects</div>
     <ul class="tw-list-none tw-pl-0">
-      <li class="tw-text-16-px tw-cursor-pointer tw-p-12-px" *ngFor="let subject of trendingSubjects" routerLink="/trending-subject/{{ subject.name }}">
+      <li
+        class="tw-text-16-px tw-cursor-pointer tw-p-12-px"
+        *ngFor="let subject of trendingSubjects"
+        routerLink="/trending-subject/{{ subject.name }}"
+      >
         {{ subject.name }}
       </li>
     </ul>
   </section>
+  <div class="tw-w-full">
+    <div
+    class="tw-flex tw-items-center tw-justify-center tw-font-bold tw-h-full tw-text-24-px"
+    *ngIf="!isLoading && allBooks.length === 0 && searchString.trim() !== ''">No Books found</div>
+    <front-end-internship-assignment-loader
+      *ngIf="isLoading"
+      class="tw-h-full tw-flex tw-justify-center tw-items-center"
+    ></front-end-internship-assignment-loader>
+
+    <front-end-internship-assignment-table-view
+      *ngIf="!isLoading && allBooks.length > 0"
+      [booksList]="allBooks"
+      [subjectName]="searchString"
+      [totalPages]="totalPages"
+      [currentPage]="currentPage"
+      (pageChange)="updatePage($event)"
+    ></front-end-internship-assignment-table-view>
+  </div>
 </div>
