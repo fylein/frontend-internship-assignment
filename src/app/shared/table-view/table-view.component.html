@@ -13,8 +13,8 @@
           <th class="header">Year of Publication</th>
         </tr>
       </thead>
-      <tbody class="table-body">
-        <tr *ngFor="let book of booksList" class="row-data">
+      <tbody class="table-body ">
+        <tr *ngFor="let book of booksList" class="row-data hover:tw-opacity-75 even:tw-bg-gray-300 odd:tw-bg-gray-200">
           <td>
             <a
               class="tw-no-underline"
@@ -30,11 +30,17 @@
         </tr>
       </tbody>
     </table>
-    <div *ngIf="totalPages > 1">
+    <div *ngIf="totalPages > 1"
+      class="tw-float-right tw-pt-2 tw-flex tw-items-center tw-gap-2"
+      >
 
-      <span>Page: {{currentPage}} of {{totalPages}}</span>
-      <button (click)="changePage(currentPage - 1)">Previous</button>
+      <span class="tw-font-bold">Page: {{currentPage}} of {{totalPages}}</span>
+      <button
+      class="tw-cursor-pointer hover:tw-opacity-60 tw-bg-[#fff] tw-p-2 tw-rounded-md tw-font-bold"
+      (click)="changePage(currentPage - 1)">Previous</button>
    
-      <button (click)="changePage(currentPage + 1)">Next</button></div>
+      <button
+      class="tw-cursor-pointer hover:tw-opacity-60 tw-bg-[#fff] tw-p-2 tw-rounded-md tw-font-bold"
+      (click)="changePage(currentPage + 1)">Next</button></div>
   </ng-container>
 </div>

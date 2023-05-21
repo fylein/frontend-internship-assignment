@@ -37,8 +37,8 @@ export class HomeComponent implements OnInit {
     this.bookSearch.valueChanges
       .pipe(debounceTime(300))
       .subscribe((value: string) => {
-        this.searchString = value;
-        this.checkString(value)
+      
+        this.checkString(value);
       });
   }
 
@@ -52,6 +52,7 @@ export class HomeComponent implements OnInit {
       }
       return {
         title: book.title,
+        key: book.key,
         authors: authors,
         first_publish_year: book.first_publish_year,
       };
@@ -59,12 +60,14 @@ export class HomeComponent implements OnInit {
   }
 
   public checkString(value: any) {
-    const trimmedValue = value.trim();
+    if(value!== ''){
+
+      const trimmedValue = value.trim();
     
     if (trimmedValue.length > 0 && this.searchString !== trimmedValue) {
       this.searchString = trimmedValue;
       this.search(1);
-    }
+    }}
   }
 
   public search(page: any = 1) {
@@ -85,10 +88,10 @@ export class HomeComponent implements OnInit {
             this.searchCache.set(cacheKey, data);
             this.handleSearchResults(data, page);
           }
-          (error: any) => {
-            // Handle any API error
-            console.error('Error occurred during search:', error);
-          };
+          
+        },(error: any) => {
+          // Handle any API error
+          console.error('Error occurred during search:', error);
         });
     }
   }
@@ -102,7 +105,6 @@ export class HomeComponent implements OnInit {
 
     this.isLoading = false;
   }
-
 
   public updatePage(page: any) {
     // console.log(page, 'page to be changed from home component')
