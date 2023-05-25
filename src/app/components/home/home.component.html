@@ -1,23 +1,77 @@
 <div class="header">
   <div class="tw-text-24-px tw-font-600">Open Books Library</div>
-  <div class="search-button">
-    <mat-icon class="tw-mt-16-px" aria-label="Search Icon">search</mat-icon>
-    <input
-      [formControl]="bookSearch"
-      name="searchKey"
-      type="text"
-      placeholder="Search Books"
-      class="tw-border-0 tw-bg-inherit"
+  <form [formGroup]="bookSearchForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Search Type</mat-label>
+      <mat-select formControlName="searchType">
+        <mat-option value="q">All</mat-option>
+        <mat-option value="title">Title</mat-option>
+        <mat-option value="author">Author</mat-option>
+      </mat-select>
+      <mat-error *ngIf="searchType?.invalid">Invalid Selection</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Search Books</mat-label>
+      <input
+        id="searchBox"
+        matInput
+        type="text"
+        formControlName="searchQuery"
+      />
+      <mat-error *ngIf="searchQuery?.invalid">Invalid Input</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="bookSearchForm.invalid"
+      type="submit"
     >
-  </div>
+      <mat-icon class="tw-mt-16-px" aria-label="Search Icon">search</mat-icon>
+    </button>
+  </form>
 </div>
 <div class="tw-flex tw-flex-row tw-m-24-px">
   <section class="trending-subjects">
     <div class="tw-font-600 tw-text-24-px">Trending Subjects</div>
     <ul class="tw-list-none tw-pl-0">
-      <li class="tw-text-16-px tw-cursor-pointer tw-p-12-px" *ngFor="let subject of trendingSubjects" routerLink="/trending-subject/{{ subject.name }}">
+      <li
+        class="tw-text-16-px tw-cursor-pointer tw-p-12-px"
+        *ngFor="let subject of trendingSubjects"
+        routerLink="/trending-subject/{{ subject.name }}"
+      >
         {{ subject.name }}
       </li>
     </ul>
+  </section>
+  <section class="subject-content">
+    <section
+      *ngIf="!isLoading && booksAvailable"
+      class="flex flex-row justify-center items-center"
+    >
+      <front-end-internship-assignment-table-view
+        [booksList]="allBooks"
+        [subjectName]="subjectName"
+      ></front-end-internship-assignment-table-view>
+    </section>
+    <section *ngIf="!booksAvailable && !isLoading" class="flex flex-column">
+      <div class="card">
+        <div class="card-head">
+          <span>millions of books online,</span>
+        </div>
+        <div class="card-body">
+          <span>What are you waiting for ?</span>
+          <span
+            >Use
+            <span
+              ><i><strong>search</strong></i></span
+            >
+            to find books you like</span
+          >
+        </div>
+      </div>
+    </section>
+    <section *ngIf="isLoading" class="mat-spinner-center">
+      <mat-spinner></mat-spinner>
+    </section>
   </section>
 </div>

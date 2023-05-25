@@ -1,17 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { debounceTime, filter } from 'rxjs';
+import { Component } from '@angular/core';
+import {
+  FormControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Book } from 'src/app/core/models/book-response.model';
+import { SearchService } from 'src/app/core/services/search.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'front-end-internship-assignment-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   bookSearch: FormControl;
+  subjectName = '';
+  allBooks = new Array<Book>();
+  booksAvailable = false;
+  bookSearchForm: FormGroup;
+  isLoading = false;
 
-  constructor() {
+  constructor(
+    private searchService: SearchService,
+    private fb: FormBuilder,
+    private snackbar: MatSnackBar
+  ) {
     this.bookSearch = new FormControl('');
+    this.bookSearchForm = this.fb.group({
+      searchType: ['', Validators.required],
+      searchQuery: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^(?!.*--)[A-Za-z0-9]+(?:[- ][A-Za-z0-9]+)*$'),
+        ],
+      ],
+    });
   }
 
   trendingSubjects: Array<any> = [
@@ -22,12 +48,25 @@ export class HomeComponent implements OnInit {
     { name: 'Crypto' },
   ];
 
-  ngOnInit(): void {
-    this.bookSearch.valueChanges
-      .pipe(
-        debounceTime(300),
-      ).
-      subscribe((value: string) => {
+  get searchType() {
+    return this.bookSearchForm.get('searchType');
+  }
+  get searchQuery() {
+    return this.bookSearchForm.get('searchQuery');
+  }
+
+  onSubmit() {
+    console.log(this.bookSearchForm.value);
+    this.isLoading = true;
+    this.searchService
+      .searchBooks(this.searchType?.value, this.searchQuery?.value)
+      .subscribe((data) => {
+        this.allBooks = data.docs;
+        this.booksAvailable = this.allBooks.length > 0 ? true : false;
+        this.isLoading = false;
+        if (this.allBooks.length === 0) {
+          this.snackbar.open('No Book found !!', 'Close');
+        }
       });
   }
 }

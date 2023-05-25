@@ -1,6 +1,5 @@
 .header {
-  @apply
-  tw-flex
+  @apply tw-flex
   tw-flex-row
   tw-justify-between
   tw-items-center
@@ -10,22 +9,87 @@
   background: linear-gradient(146deg, #e1eeff 19.67%, #ffe4fb 127.56%);
 }
 
-.search-button {
-  @apply
-  tw-border 
-  tw-border-solid 
-  tw-border-dark-border
-  tw-rounded-4-px
-  tw-flex
-  tw-justify-center
-  tw-h-60-px
-  tw-w-200-px
-}
+// .search-button {
+//   @apply
+//   tw-border
+//   tw-border-solid
+//   tw-border-dark-border
+//   tw-rounded-4-px
+//   tw-flex
+//   tw-justify-center
+//   tw-h-60-px
+//   tw-w-200-px
+// }
 
 .trending-subjects {
-  @apply
-  tw-bg-table-header-bg
+  @apply tw-bg-table-header-bg
   tw-p-12-px
   tw-rounded-4-px
-  tw-shadow-lg
+  tw-shadow-lg;
+}
+
+.mat-spinner-center {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  min-width: 220px;
+  max-width: 320px;
+  padding: 4vw 5vw;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 121, 115, 1) 70%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: white;
+  border-radius: 10px;
+
+  .card-head {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    span {
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: capitalize;
+      font-size: 3rem;
+    }
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    span {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.2rem;
+
+      span {
+        text-transform: capitalize;
+        background-color: pink;
+        padding: 1px 4px;
+        color: black;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+.subject-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

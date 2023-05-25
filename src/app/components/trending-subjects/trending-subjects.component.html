@@ -1,6 +1,18 @@
+<div class="mat-spinner-center" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
 <div *ngIf="allBooks.length > 0">
+  <div class="tw-mb-24-px tw-text-24-px">
+    Top {{ allBooks.length }} book{{ allBooks.length > 1 ? 's' : '' }} on
+    {{ subjectsArray.name }}
+  </div>
+  <div class="menu-bar">
+    <span routerLink="">HOME</span>
+  </div>
+
   <front-end-internship-assignment-table-view
-  [booksList]="allBooks"
-  [subjectName]="subjectName"
+    [booksList]="allBooks"
+    [subjectName]="subjectsArray.name"
   ></front-end-internship-assignment-table-view>
 </div>
